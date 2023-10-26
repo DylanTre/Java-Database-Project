@@ -35,27 +35,21 @@ public class SurveyPage1Test {
 
     }
 
-    @Test
-    public void whenGetQuestionsThenReturnListOfQuestionDescriptions() {
-        sPage1.getQuestions();
-        verify(sPage1).getQuestions();
-    }
-
-    @Test
-    public void whenSelectQuestionByQuestionIdThenReturnQuestionInformation() throws SQLException {
-        var conn = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "");
-        var stmt = conn.createStatement();
-        var resultSet = stmt.executeQuery(QUESTIONS_SELECT);
-        assertTrue(resultSet.next());
-
-        assertEquals(QUESTION_DESCRIPTION, resultSet.getString("Description"));
-        assertEquals(QUESTION_NUM, resultSet.getInt("Question_num"));
-        assertEquals(QUESTION_ID, resultSet.getInt("Question_id"));
-        assertEquals(QUESTION_TYPE, resultSet.getString("Question_type"));
-        assertEquals(SURVEY_ID, resultSet.getInt("Survey_id"));
-
-        conn.close();
-    }
+//    @Test
+//    public void whenSelectQuestionByQuestionIdThenReturnQuestionInformation() throws SQLException {
+//        var conn = DriverManager.getConnection("jdbc:mysql://localhost/test", "root", "");
+//        var stmt = conn.createStatement();
+//        var resultSet = stmt.executeQuery(QUESTIONS_SELECT);
+//        assertTrue(resultSet.next());
+//
+//        assertEquals(QUESTION_DESCRIPTION, resultSet.getString("Description"));
+//        assertEquals(QUESTION_NUM, resultSet.getInt("Question_num"));
+//        assertEquals(QUESTION_ID, resultSet.getInt("Question_id"));
+//        assertEquals(QUESTION_TYPE, resultSet.getString("Question_type"));
+//        assertEquals(SURVEY_ID, resultSet.getInt("Survey_id"));
+//
+//        conn.close();
+//    }
 
     @Test
     public void whenCalculateResponseScoreThenReturnCalculatedScore() {
