@@ -23,6 +23,8 @@ public class surveyPage1 extends JFrame {
     private JLabel q4;
     private JLabel q5;
 
+    public surveyPage1(){}
+
     public surveyPage1(final String ssn) {
         q1.setText(getQuestions().get(0));
         q2.setText(getQuestions().get(1));
@@ -142,6 +144,6 @@ public class surveyPage1 extends JFrame {
 
 
     public double calculateResponseScore(int numberOfAnswers, int answerValue) {
-        return 0.3 * numberOfAnswers / (answerValue + 1);
+        return 2 * numberOfAnswers * 0.5 * (answerValue + 2);
     }
 }

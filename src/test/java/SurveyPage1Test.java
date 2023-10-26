@@ -4,11 +4,8 @@ import org.mockito.Mock;
 
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-
-import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.verify;
@@ -27,14 +24,15 @@ public class SurveyPage1Test {
     public static final int SURVEY_ID = 1;
 
     public static final String QUESTIONS_SELECT = "SELECT * FROM questions WHERE question_id = 1";
+    public static final String SSN = "12345";
 
-    @Mock
     public surveyPage1 sPage1;
 
     @Before
     public void setup() {
-        when(sPage1.getQuestions())
-                .thenReturn(QUESTION_DESCRIPTIONS);
+        sPage1 = new surveyPage1();
+//
+
     }
 
     @Test
@@ -53,7 +51,7 @@ public class SurveyPage1Test {
         assertEquals(QUESTION_DESCRIPTION, resultSet.getString("Description"));
         assertEquals(QUESTION_NUM, resultSet.getInt("Question_num"));
         assertEquals(QUESTION_ID, resultSet.getInt("Question_id"));
-        assertEquals(QUESTION_DESCRIPTION, resultSet.getString("Question_type"));
+        assertEquals(QUESTION_TYPE, resultSet.getString("Question_type"));
         assertEquals(SURVEY_ID, resultSet.getInt("Survey_id"));
 
         conn.close();
@@ -61,7 +59,7 @@ public class SurveyPage1Test {
 
     @Test
     public void whenCalculateResponseScoreThenReturnCalculatedScore() {
-        assertEquals(sPage1.calculateResponseScore(3, 1), 3, 0.001);
+        assertEquals(12.0, sPage1.calculateResponseScore(3, 2), 0.001);
     }
 
 }
