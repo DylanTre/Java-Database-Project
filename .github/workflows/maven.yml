@@ -17,7 +17,7 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -28,6 +28,4 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      uses: coactions/setup-xvfb@v1
-      with:
-        run: xvbf-run mvn clean install
+      run: xvbf-run mvn clean install
