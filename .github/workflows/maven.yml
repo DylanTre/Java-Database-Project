@@ -28,4 +28,6 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: xvbf-run mvn clean install
+      uses: coactions/setup-xvfb@v1
+      with:
+        run: xvbf-run mvn clean install
