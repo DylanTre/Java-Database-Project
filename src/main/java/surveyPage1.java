@@ -1,6 +1,3 @@
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,7 +23,7 @@ public class surveyPage1 extends JFrame {
     private JLabel q4;
     private JLabel q5;
 
-    public surveyPage1(String ssn) {
+    public surveyPage1(final String ssn) {
         q1.setText(getQuestions().get(0));
         q2.setText(getQuestions().get(1));
         q3.setText(getQuestions().get(2));
@@ -95,7 +92,6 @@ public class surveyPage1 extends JFrame {
             ResultSet resultSet = statement.executeQuery("SELECT * FROM questions");
             while (resultSet.next()){
                 list.add(resultSet.getString("Description"));
-
             }
         }
         catch (Exception ioException){
@@ -131,10 +127,10 @@ public class surveyPage1 extends JFrame {
             String sql = " insert into responses (`Responses_id`, `Answer`, `Question_id`, `SSN`)"
                     + " values (?, ?, ?, ?)";
             PreparedStatement preparedStmt = connection.prepareStatement(sql);
-            preparedStmt.setString (1, Responses_id);
-            preparedStmt.setString (2, Answer);
+            preparedStmt.setString(1, Responses_id);
+            preparedStmt.setString(2, Answer);
             preparedStmt.setString(3, Question_id);
-            preparedStmt.setString    (4, SSN);
+            preparedStmt.setString(4, SSN);
             preparedStmt.execute();
 
 
@@ -142,4 +138,10 @@ public class surveyPage1 extends JFrame {
         catch (Exception ioException){
             ioException.printStackTrace();
         }
-}}
+    }
+
+
+    public double calculateResponseScore(int numberOfAnswers, int answerValue) {
+        return 0.3 * numberOfAnswers / (answerValue + 1);
+    }
+}

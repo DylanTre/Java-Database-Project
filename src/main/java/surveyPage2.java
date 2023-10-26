@@ -1,6 +1,3 @@
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -25,7 +22,7 @@ public class surveyPage2 extends JFrame {
     private JLabel q5;
     private JPanel surveyPage2;
 
-    public surveyPage2(String ssn) {
+    public surveyPage2(final String ssn) {
         q1.setText(getQuestions().get(5));
         q2.setText(getQuestions().get(6));
         q3.setText(getQuestions().get(7));

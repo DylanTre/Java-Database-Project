@@ -1,6 +1,3 @@
-import com.mysql.jdbc.Connection;
-import com.mysql.jdbc.Statement;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +12,7 @@ public class userPanel extends JFrame {
     private JButton survey2Button;
     private JButton backToMainPageButton;
 
-    public userPanel(String SSN){
+    public userPanel(final String SSN){
 
         survey1Button.setText(getSurveyName().get(0)+"("+getSurveyDes().get(0)+")");
         survey2Button.setText(getSurveyName().get(1)+"("+getSurveyDes().get(1)+")");
